@@ -1,5 +1,17 @@
-var mysql = require('pg');
+var PostInstance = require('./post/post');
+var CommentInstance = require('./comment/comment');
 
-let teste = (v => console.log(v));
+PostInstance.Post.findById(1).then((resp) => {
+    console.log(resp.txt);
+});
 
-teste(mysql)
+
+CommentInstance.Commnet.findAll({ limit: 1}).then((resp) => {
+    console.log(resp[0].txt);
+});
+
+
+PostInstance.Post.create({
+    date: Date.now(),
+    txt: 'Meu post'
+})

@@ -1,12 +1,17 @@
-var db = require('../config/database');
+var seq = require('../config/database');
+var PostInstance = require('../post/post');
+var Sequelize = require('sequelize');
 
-class Comment{
-    constructor(id, postId, txt){
-        this.id = id;
-        this.postId = postId;
-        this.txt = txt;
-    }
-    save(){
+var CommentModel = seq().define('comment',{
+  date: {type: Sequelize.DATE, defaultValue: Sequelize.NOW},
+  txt: {type: Sequelize.STRING, notNull : true}
+}, {
+    timestamps: false,
+    freezeTableName: true,
+    tableName: 'comment'
+});
 
-    }
-}
+CommentModel.belongsTo(PostInstance.Post);
+
+exports.Commnet = CommentModel;
+
