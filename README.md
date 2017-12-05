@@ -1,2 +1,3 @@
-# blog
-tentando fazer um blog em node
+# Blog
+Estou tentando fazer um blog em node.js
+Abraço!
